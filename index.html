@@ -7,178 +7,217 @@
 <meta name="description" content="AI products and growth systems built by Ankit Banerjee: Katha Reels, Viral Ads Engine, and AI tools for paid acquisition at Tamasha.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Noto+Sans+Devanagari:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f6f2; --surface: #ffffff; --ink: #14213d; --muted: #4a5568; --faint: #6b7280;
-    --line: #e2e0d8; --accent: #b45309; --accent-soft: #fdf3e7; --blue: #2459c4; --blue-soft: #eaf0fb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0d1117; --surface: #161b22; --ink: #e6e8ee; --muted: #b3b9c6; --faint: #8b93a3;
-      --line: #2a313c; --accent: #f2a65a; --accent-soft: #2a1f12; --blue: #7aa7ff; --blue-soft: #16223a;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0d1117; --surface: #161b22; --ink: #e6e8ee; --muted: #b3b9c6; --faint: #8b93a3;
-    --line: #2a313c; --accent: #f2a65a; --accent-soft: #2a1f12; --blue: #7aa7ff; --blue-soft: #16223a;
+    --paper: #f2efe6;
+    --ink: #0a0a0a;
+    --hot: #ff4d00;
+    --sun: #ffe14d;
+    --white: #ffffff;
+    --rule: 4px solid var(--ink);
+    --shadow: 8px 8px 0 var(--ink);
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "DM Sans", system-ui, sans-serif; }
-  a { color: var(--blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 56px 0 28px; }
-  h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0; }
-  .role { font-size: 18px; color: var(--muted); margin: 8px 0 0; }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
-         background: var(--surface); color: var(--ink); font-weight: 600; font-size: 14px; }
-  .btn:hover { text-decoration: none; border-color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  :root[data-theme="dark"] .btn.primary { color: #17130a; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #17130a; } }
-  .lead { max-width: 760px; color: var(--muted); font-size: 17px; margin: 20px 0 0; }
-  h2 { font-size: 24px; margin: 48px 0 6px; }
-  .sub { color: var(--faint); margin: 0 0 18px; font-size: 15px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
-  .card + .card { margin-top: 18px; }
-  .card h3 { margin: 0; font-size: 21px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
-  .tag { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); }
-  .tag.co { background: var(--accent-soft); color: var(--accent); }
-  .card p { color: var(--muted); margin: 12px 0 0; }
-  .flow { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .flow li { font-size: 13px; font-weight: 600; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
-  .flow li + li::before { content: "→"; margin: 0 8px 0 -2px; color: var(--faint); font-weight: 400; }
-  .flow li + li { border: none; background: none; padding-left: 0; }
-  .flow li + li span { display: inline-block; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 18px 0 0; }
-  .stat { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-  .stat b { display: block; font-size: 22px; line-height: 1.2; color: var(--ink); }
-  .stat span { font-size: 13px; color: var(--faint); }
-  .reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 0; }
-  .reel { margin: 0; }
-  .reel video { width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 12px; display: block; object-fit: cover; }
-  .reel figcaption { margin-top: 8px; font-size: 13px; color: var(--faint); }
-  .reel figcaption b { display: block; font-family: "Noto Sans Devanagari", "DM Sans", sans-serif; color: var(--ink); font-size: 16px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .grid2 .card + .card { margin-top: 0; }
-  .note { font-size: 13px; color: var(--faint); margin-top: 14px; }
-  footer { padding: 48px 0 56px; color: var(--faint); font-size: 14px; }
-  @media (max-width: 720px) {
-    .reels { grid-template-columns: 1fr; max-width: 340px; }
-    .grid2 { grid-template-columns: 1fr; }
-    .grid2 .card + .card { margin-top: 18px; }
+  html { background: var(--paper); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 "Space Mono", ui-monospace, monospace; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* top bar */
+  .bar { border-bottom: var(--rule); background: var(--ink); color: var(--paper); }
+  .bar .wrap { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px;
+               font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .bar a { text-decoration: none; }
+  .bar a:hover { color: var(--sun); }
+
+  /* hero */
+  .hero { border-bottom: var(--rule); padding: 48px 0 40px; }
+  .hero h1 { font-family: "Archivo Black", Impact, sans-serif; font-weight: 400; text-transform: uppercase;
+             font-size: clamp(48px, 11vw, 132px); line-height: .9; margin: 0; letter-spacing: -.02em; }
+  .hero h1 span { background: var(--hot); color: var(--ink); padding: 0 .08em; }
+  .hero .role { display: inline-block; margin-top: 24px; border: var(--rule); background: var(--sun);
+                padding: 8px 14px; font-weight: 700; text-transform: uppercase; box-shadow: var(--shadow); }
+  .hero p { max-width: 760px; font-size: 17px; margin: 28px 0 0; }
+
+  /* buttons */
+  .btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+  .btn { display: inline-block; border: 3px solid var(--ink); background: var(--white); padding: 10px 16px;
+         font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 14px;
+         box-shadow: 5px 5px 0 var(--ink); transition: transform .08s, box-shadow .08s; }
+  .btn:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn:focus-visible { outline: 3px solid var(--hot); outline-offset: 3px; }
+  .btn.go { background: var(--hot); }
+  .btn.sun { background: var(--sun); }
+
+  /* sections */
+  section { border-bottom: var(--rule); padding: 44px 0 52px; }
+  .head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .num { font-family: "Archivo Black", sans-serif; font-size: 20px; background: var(--ink); color: var(--paper); padding: 2px 10px; }
+  h2 { font-family: "Archivo Black", Impact, sans-serif; font-weight: 400; text-transform: uppercase; margin: 0;
+       font-size: clamp(32px, 6vw, 64px); line-height: .95; letter-spacing: -.01em; }
+  .kicker { width: 100%; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-top: 8px; }
+
+  .box { border: var(--rule); background: var(--white); box-shadow: var(--shadow); padding: 24px; }
+  .box h3 { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 22px; line-height: 1.1; margin: 0; }
+  .box p { margin: 14px 0 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; }
+  .tag.co { background: var(--hot); color: var(--ink); }
+
+  /* pipeline */
+  .flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin: 22px 0 0; padding: 0; list-style: none; }
+  .flow li { border: 3px solid var(--ink); background: var(--sun); padding: 8px 12px; font-size: 13px; font-weight: 700;
+             text-transform: uppercase; margin: 0 28px 10px 0; position: relative; }
+  .flow li:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%);
+                                      font-weight: 700; font-size: 18px; }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); border: var(--rule); margin-top: 22px; background: var(--white); }
+  .stat { padding: 14px 16px; border-right: var(--rule); }
+  .stat:last-child { border-right: none; }
+  .stat b { display: block; font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 34px; line-height: 1.05; }
+  .stat span { font-size: 13px; text-transform: uppercase; font-weight: 700; }
+
+  /* reels */
+  .reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+  .reel { margin: 0; border: var(--rule); background: var(--ink); box-shadow: var(--shadow); }
+  .reel video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: var(--ink); }
+  .reel figcaption { background: var(--white); border-top: var(--rule); padding: 10px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+  .reel figcaption b { display: block; font-family: "Noto Sans Devanagari", sans-serif; font-weight: 900; font-size: 20px; text-transform: none; line-height: 1.3; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .note { margin-top: 16px; font-size: 13px; border-left: 6px solid var(--hot); padding-left: 10px; }
+
+  footer { padding: 28px 0 48px; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+  footer a { text-decoration: underline; text-decoration-thickness: 3px; }
+
+  @media (max-width: 760px) {
+    .reels { grid-template-columns: 1fr; max-width: 360px; }
+    .grid { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: var(--rule); }
+    .stat:last-child { border-bottom: none; }
+    .bar .wrap span:last-child { display: none; }
   }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <h1>Ankit Banerjee</h1>
-  <p class="role">Growth &amp; AI Product Manager · Tamasha · founder of Troak</p>
-  <p class="lead">I build AI products that move growth numbers: agents that produce ads every day, pipelines that turn stories into binge-able reels, and the analytics that tell a team which creative to scale. Below are the ones I can show, with a primer for each.</p>
-  <div class="links">
+<div class="bar"><div class="wrap">
+  <span>Ankit Banerjee / AI projects</span>
+  <span><a href="https://www.linkedin.com/in/ankit-b-583768aa/">LinkedIn</a> · <a href="https://github.com/Rajabeta-ai">GitHub</a></span>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <h1>Ankit<br><span>Banerjee</span></h1>
+  <div class="role">Growth &amp; AI Product Manager · Tamasha · Founder, Troak</div>
+  <p>I build AI products that move growth numbers: agents that produce ads every day, pipelines that turn stories into binge-able reels, and the analytics that tell a team which creative to scale. Every project below has a primer: what it does, how it works, and where to see it.</p>
+  <div class="btns">
+    <a class="btn go" href="#katha">See the reels ↓</a>
     <a class="btn" href="https://www.linkedin.com/in/ankit-b-583768aa/">LinkedIn</a>
     <a class="btn" href="https://github.com/Rajabeta-ai">GitHub</a>
   </div>
-</header>
+</div></header>
 
-<h2>Katha Reels</h2>
-<p class="sub">AI micro-drama studio for Indian mythology · my project · live, password-protected</p>
-<div class="card">
-  <h3>Turns a Mahabharata chapter into a binge-able Hindi reel series</h3>
-  <div class="tags"><span class="tag">Next.js</span><span class="tag">LLM agents</span><span class="tag">Gemini image</span><span class="tag">Veo 3.1</span><span class="tag">ElevenLabs</span><span class="tag">ffmpeg</span></div>
-  <p>China's short-drama apps showed that 60–90 second episodes with a hook in the first 3 seconds and a cliffhanger at the end keep people watching. Katha Reels applies that format to 48 canonical chapters across 6 works. The three episodes below are exactly what the studio rendered.</p>
+<section id="katha"><div class="wrap">
+  <div class="head"><span class="num">01</span><h2>Katha Reels</h2>
+    <div class="kicker">AI micro-drama studio for Indian mythology · my project · live, password-protected</div></div>
+  <div class="box">
+    <h3>Turns a Mahabharata chapter into a binge-able Hindi reel series</h3>
+    <div class="tags"><span class="tag">Next.js</span><span class="tag">LLM agents</span><span class="tag">Gemini image</span><span class="tag">Veo 3.1</span><span class="tag">ElevenLabs</span><span class="tag">ffmpeg</span></div>
+    <p>China's short-drama apps proved that 60–90 second episodes, with a hook in the first 3 seconds and a cliffhanger at the end, keep people watching. Katha Reels applies that format to 48 canonical chapters across 6 works. These three episodes are exactly what the studio rendered.</p>
+  </div>
   <div class="reels">
-    <figure class="reel"><video src="media/chakravyuh-ep01.mp4" poster="media/chakravyuh-ep01.jpg" controls playsinline preload="none"></video><figcaption><b>अर्जुन को हटाओ</b>Episode 1 · 67 s</figcaption></figure>
-    <figure class="reel"><video src="media/chakravyuh-ep02.mp4" poster="media/chakravyuh-ep02.jpg" controls playsinline preload="none"></video><figcaption><b>सात घेरे</b>Episode 2 · 71 s</figcaption></figure>
-    <figure class="reel"><video src="media/chakravyuh-ep03.mp4" poster="media/chakravyuh-ep03.jpg" controls playsinline preload="none"></video><figcaption><b>मैं जानता हूँ</b>Episode 3 · 79 s</figcaption></figure>
+    <figure class="reel"><video src="media/chakravyuh-ep01.mp4" poster="media/chakravyuh-ep01.jpg" controls playsinline preload="none"></video><figcaption><b>अर्जुन को हटाओ</b>EP 01 · 67 s</figcaption></figure>
+    <figure class="reel"><video src="media/chakravyuh-ep02.mp4" poster="media/chakravyuh-ep02.jpg" controls playsinline preload="none"></video><figcaption><b>सात घेरे</b>EP 02 · 71 s</figcaption></figure>
+    <figure class="reel"><video src="media/chakravyuh-ep03.mp4" poster="media/chakravyuh-ep03.jpg" controls playsinline preload="none"></video><figcaption><b>मैं जानता हूँ</b>EP 03 · 79 s</figcaption></figure>
   </div>
   <ol class="flow">
-    <li>Chapter + hooks</li><li><span>Series spine (LLM)</span></li><li><span>5-beat episode scripts</span></li><li><span>QC: 11 checks</span></li><li><span>Gemini stills + Veo motion</span></li><li><span>Hindi narration</span></li><li><span>1080×1920 MP4</span></li>
+    <li>Chapter + hooks</li><li>Series spine (LLM)</li><li>5-beat scripts</li><li>QC: 11 checks</li><li>Gemini stills + Veo motion</li><li>Hindi narration</li><li>1080×1920 MP4</li>
   </ol>
   <div class="stats">
-    <div class="stat"><b>48</b><span>chapters across 6 works</span></div>
-    <div class="stat"><b>12 · 8</b><span>hook types · cliffhanger types</span></div>
+    <div class="stat"><b>48</b><span>chapters, 6 works</span></div>
+    <div class="stat"><b>12 / 8</b><span>hook / cliffhanger types</span></div>
     <div class="stat"><b>6 of 11</b><span>QC checks block a bad reel</span></div>
   </div>
-  <div class="actions">
-    <a class="btn primary" href="https://katha-reels.onrender.com/welcome">Open the live studio (password)</a>
+  <div class="btns">
+    <a class="btn go" href="https://katha-reels.onrender.com/welcome">Open the live studio (password)</a>
     <a class="btn" href="https://github.com/Rajabeta-ai/katha-reels">Source code</a>
   </div>
-</div>
+</div></section>
 
-<h2>Viral Ads Engine</h2>
-<p class="sub">Trend-to-ad pipeline for Indian Instagram · my project · open source</p>
-<div class="card">
-  <h3>Finds what is going viral, works out why, and writes the ad</h3>
-  <div class="tags"><span class="tag">Python</span><span class="tag">LLM classification</span><span class="tag">HikerAPI</span><span class="tag">Veo 3.1</span><span class="tag">Render</span></div>
-  <p>Every 3 hours it harvests Reels across 11 languages and 3 genres, and looks for posts whose reach far exceeds the creator's follower count: there the format carried the post, so the format is worth recreating. An LLM labels and clusters those formats into shootable recipes, then writes Veo prompts against each app's positioning and guardrails.</p>
-  <ol class="flow">
-    <li>Harvest</li><li><span>Score: reach ÷ followers</span></li><li><span>Label formats (LLM)</span></li><li><span>Cluster into recipes</span></li><li><span>Write Veo prompts + guardrails</span></li><li><span>Render + outro</span></li>
-  </ol>
-  <div class="stats">
-    <div class="stat"><b>156</b><span>hashtag seeds</span></div>
-    <div class="stat"><b>11</b><span>Indian languages</span></div>
-    <div class="stat"><b>3 h</b><span>refresh cycle, 3-day window</span></div>
+<section id="viral"><div class="wrap">
+  <div class="head"><span class="num">02</span><h2>Viral Ads Engine</h2>
+    <div class="kicker">Trend-to-ad pipeline for Indian Instagram · my project · open source</div></div>
+  <div class="box">
+    <h3>Finds what is going viral, works out why, and writes the ad</h3>
+    <div class="tags"><span class="tag">Python</span><span class="tag">LLM classification</span><span class="tag">HikerAPI</span><span class="tag">Veo 3.1</span><span class="tag">Render</span></div>
+    <p>Every 3 hours it harvests Reels across 11 languages and 3 genres, and looks for posts whose reach far exceeds the creator's follower count: there the format carried the post, so the format is worth recreating. An LLM labels and clusters those formats into shootable recipes, then writes Veo prompts against each app's positioning and guardrails.</p>
+    <ol class="flow">
+      <li>Harvest</li><li>Score: reach ÷ followers</li><li>Label formats (LLM)</li><li>Cluster recipes</li><li>Veo prompts + guardrails</li><li>Render + outro</li>
+    </ol>
+    <div class="stats">
+      <div class="stat"><b>156</b><span>hashtag seeds</span></div>
+      <div class="stat"><b>11</b><span>Indian languages</span></div>
+      <div class="stat"><b>3 h</b><span>refresh, 3-day window</span></div>
+    </div>
+    <div class="btns"><a class="btn sun" href="https://github.com/Rajabeta-ai/viral-ads-engine-public">Source code</a></div>
+    <p class="note">The production deployment runs on private client configuration, so there is no public demo. A walkthrough is available on request.</p>
   </div>
-  <div class="actions">
-    <a class="btn" href="https://github.com/Rajabeta-ai/viral-ads-engine-public">Source code</a>
-  </div>
-  <p class="note">The production deployment runs on private client configuration, so there is no public demo; a walkthrough is available on request.</p>
-</div>
+</div></section>
 
-<h2>AI tools I built at Tamasha</h2>
-<p class="sub">Internal tools for a 13-app consumer portfolio spending ₹4.6 cr a month on acquisition. Case studies only: these run inside Tamasha's systems.</p>
-<div class="grid2">
-  <div class="card">
-    <h3>Ad Agent</h3>
-    <div class="tags"><span class="tag co">Internal · Tamasha</span><span class="tag">Azure GPT</span><span class="tag">Veo 3.1</span><span class="tag">ElevenLabs</span></div>
-    <p>Produces video ads every day: script, video, voice-over, the right app's closing clip and a naming convention the analytics can read. It learns from live Meta results, a Drive knowledge base and competitor ads, with a job queue, scheduler and per-run cost caps. Five milestones shipped in two days.</p>
-    <ol class="flow"><li>LLM script</li><li><span>Veo video</span></li><li><span>Voice</span></li><li><span>App outro</span></li><li><span>Named + queued</span></li></ol>
+<section id="tamasha"><div class="wrap">
+  <div class="head"><span class="num">03</span><h2>Built at Tamasha</h2>
+    <div class="kicker">Internal AI tools for a 13-app portfolio spending ₹4.6 cr a month on acquisition · case studies only</div></div>
+  <div class="grid">
+    <div class="box">
+      <h3>Ad Agent</h3>
+      <div class="tags"><span class="tag co">Internal</span><span class="tag">Azure GPT</span><span class="tag">Veo 3.1</span><span class="tag">ElevenLabs</span></div>
+      <p>Produces video ads every day: script, video, voice-over, the right app's closing clip and a name the analytics can read. It learns from live Meta results, a Drive knowledge base and competitor ads, with a job queue, scheduler and per-run cost caps. Five milestones shipped in two days.</p>
+      <ol class="flow"><li>LLM script</li><li>Veo video</li><li>Voice</li><li>Outro</li><li>Named + queued</li></ol>
+    </div>
+    <div class="box">
+      <h3>Google Ads agent</h3>
+      <div class="tags"><span class="tag co">Internal</span><span class="tag">MCP</span><span class="tag">Codex</span><span class="tag">Google Ads API</span></div>
+      <p>An MCP service that lets a marketer who doesn't code run Google App campaigns in plain language: create campaigns, upload video assets, refresh ad copy and pull reports. It supported Google going from zero to ₹2.8 cr and 1.1M conversions in five months.</p>
+    </div>
+    <div class="box">
+      <h3>Growth analytics</h3>
+      <div class="tags"><span class="tag co">Internal</span><span class="tag">SQL</span><span class="tag">Meta + Google APIs</span></div>
+      <p>A weekly Meta + Google dashboard across 13 ad accounts. It reads app, language and format out of 5,700+ ad names, so the founders see launches, scale rate, CTR, hook and hold rates, and CAC by app, language and format without manual reporting.</p>
+      <div class="stats"><div class="stat"><b>14×</b><span>new ads a month</span></div><div class="stat"><b>35%</b><span>scale rate, AI selfie video call (UGC: 10%)</span></div></div>
+    </div>
+    <div class="box">
+      <h3>B2B lead agent</h3>
+      <div class="tags"><span class="tag co">Internal</span><span class="tag">LLM web search</span><span class="tag">Google Sheets</span></div>
+      <p>Builds city-wise lead lists from AI web search for 23 Indian cities, checks each phone number against its source page, adds a map link, and writes the result to a shared Google Sheet.</p>
+    </div>
   </div>
-  <div class="card">
-    <h3>Google Ads agent</h3>
-    <div class="tags"><span class="tag co">Internal · Tamasha</span><span class="tag">MCP</span><span class="tag">Codex</span><span class="tag">Google Ads API</span></div>
-    <p>An MCP service that lets a marketer who doesn't code run Google App campaigns in plain language: create campaigns, upload video assets, refresh ad copy and pull reports. It supported Google going from zero to ₹2.8 cr and 1.1M conversions in five months.</p>
-  </div>
-  <div class="card">
-    <h3>Growth analytics</h3>
-    <div class="tags"><span class="tag co">Internal · Tamasha</span><span class="tag">SQL</span><span class="tag">Meta + Google APIs</span></div>
-    <p>A weekly Meta + Google dashboard across 13 ad accounts. It reads app, language and format out of 5,700+ ad names, so the founders see launches, scale rate, CTR, hook and hold rates, and CAC by app, language and format, without manual reporting.</p>
-    <div class="stats"><div class="stat"><b>14x</b><span>new ads a month (174 → 2,462)</span></div><div class="stat"><b>35% vs 10%</b><span>scale rate: AI Selfie Video Call vs UGC</span></div></div>
-  </div>
-  <div class="card">
-    <h3>B2B lead agent</h3>
-    <div class="tags"><span class="tag co">Internal</span><span class="tag">LLM web search</span><span class="tag">Google Sheets</span></div>
-    <p>Builds city-wise lead lists from AI web search for 23 Indian cities, verifies each phone number against its source page, adds a map link, and writes the result to a shared Google Sheet.</p>
-  </div>
-</div>
+</div></section>
 
-<h2>Earlier</h2>
-<div class="grid2">
-  <div class="card">
-    <h3>Troak</h3>
-    <div class="tags"><span class="tag">Founder</span><span class="tag">GenAI</span><span class="tag">100X.VC Class 12</span></div>
-    <p>A platform where writers publish choose-your-path stories built with orchestrated AI agents. Raised $200K; reached 1,000+ creators and 100K+ readers with 40% D7 retention.</p>
-    <div class="actions"><a class="btn" href="https://inc42.com/buzz/meet-the-18-startups-backed-by-100x-vc-in-its-12th-cohort/">Inc42: 100X.VC cohort</a><a class="btn" href="https://apps.apple.com/us/app/-/id6739448231">App Store</a></div>
+<section id="earlier"><div class="wrap">
+  <div class="head"><span class="num">04</span><h2>Earlier</h2></div>
+  <div class="grid">
+    <div class="box">
+      <h3>Troak</h3>
+      <div class="tags"><span class="tag">Founder</span><span class="tag">GenAI</span><span class="tag">100X.VC Class 12</span></div>
+      <p>A platform where writers publish choose-your-path stories built with orchestrated AI agents. Raised $200K; reached 1,000+ creators and 100K+ readers with 40% D7 retention.</p>
+      <div class="btns"><a class="btn" href="https://inc42.com/buzz/meet-the-18-startups-backed-by-100x-vc-in-its-12th-cohort/">Inc42: 100X.VC cohort</a><a class="btn" href="https://apps.apple.com/us/app/-/id6739448231">App Store</a></div>
+    </div>
+    <div class="box">
+      <h3>Micro-drama, Episode 1</h3>
+      <div class="tags"><span class="tag">Live action</span></div>
+      <p>A live-action micro-drama episode I shot in the same hook-and-cliffhanger format the studio automates.</p>
+      <div class="btns"><a class="btn sun" href="https://drive.google.com/drive/folders/1h0ttYMwp-GNdykfCRuRuu7_ACq7TdgVA">Watch on Google Drive</a></div>
+    </div>
   </div>
-  <div class="card">
-    <h3>Micro-drama, Episode 1</h3>
-    <div class="tags"><span class="tag">Live action</span></div>
-    <p>A live-action micro-drama episode I shot in the same hook-and-cliffhanger format the studio automates.</p>
-    <div class="actions"><a class="btn" href="https://drive.google.com/drive/folders/1h0ttYMwp-GNdykfCRuRuu7_ACq7TdgVA">Watch on Google Drive</a></div>
-  </div>
-</div>
+</div></section>
 
-<footer>
+<footer><div class="wrap">
   Ankit Banerjee · <a href="https://www.linkedin.com/in/ankit-b-583768aa/">LinkedIn</a> · <a href="https://github.com/Rajabeta-ai">GitHub</a>
-</footer>
+</div></footer>
 
-</div>
 </body>
 </html>
